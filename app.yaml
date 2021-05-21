@@ -1,0 +1,18 @@
+runtime: python38
+service: adfs-login
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+
+env_variables:
+  ADFS_CLIENT_SECRET: ""
+  ADFS_CLIENT_ID: ""
+  ADFS_TENANT_ID: "8db91967-66af-4fbc-b977-02e4530b078c"
+  ADFS_AUTHORITY: "https://login.microsoftonline.com/common"
+  ADFS_REDIRECT_URI: "https://adfs-login-dot-dev-trials-project.el.r.appspot.com/callback"
+  ADFS_AUTHORIZE_ENDPOINT: "/oauth2/authorize"
+  ADFS_TOKEN_ENDPOINT: "/oauth2/token"
+  ADFS_PROFILE_INFO: "https://login.microsoftonline.com/common/openid/userinfo"
+  ADFS_SIGNOUT_URL: "https://login.microsoftonline.com/common/oauth2/logout"
