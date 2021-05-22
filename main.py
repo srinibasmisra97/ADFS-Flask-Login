@@ -5,7 +5,7 @@ from requests_oauthlib import OAuth2Session
 from settings import *
 
 app = Flask(__name__)
-app.secret_key = "abcdefghi" # Secret key required for Flask session
+app.secret_key = "abcdefghi"
 
 
 @app.route("/", methods=['GET'])
@@ -58,7 +58,7 @@ def callback():
 @app.route("/signout", methods=['GET'])
 def signout():
     session.clear()
-    return redirect("/")
+    return redirect("{0}?client_id={1}&post_logout_redirect_uri={2}".format(ADFS_SIGNOUT_URL, ADFS_CLIENT_ID, request.host_url))
 
 
 if __name__ == "__main__":
